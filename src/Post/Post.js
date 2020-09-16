@@ -35,7 +35,10 @@ function Post(props) {
   return (
     <div>
       <Modal open={open} onClose={() => setOpen(false)}>
-        <div style={modalStyle} className={classes.paper}></div>
+        <div style={modalStyle} className={classes.paper}>
+          <img src={props.src} alt="" width="300px" />
+          <p>{props.caption}</p>
+        </div>
       </Modal>
       <img
         key={props.id}

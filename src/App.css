@@ -4,13 +4,7 @@
 
 .posts {
   display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr; */
-  /* grid-template-rows: repeat(3, minmax(300px, auto)); */
-  /* align-items: center;
-  justify-items: center; */
   place-items: center center;
-  /* place-content: center center; */
-
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
 
