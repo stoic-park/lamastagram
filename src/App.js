@@ -81,6 +81,7 @@ function App() {
 
   return (
     <>
+      {/* 닉네임 설정 모달 */}
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <Input
@@ -94,8 +95,10 @@ function App() {
           </Button>
         </div>
       </Modal>
+      {/*  */}
+      {/*  */}
       <button onClick={() => auth.signOut()}>Log Out</button>
-      <AppRouter isLoggedIn={isLoggedIn} />
+      <AppRouter isLoggedIn={isLoggedIn} user={user} />
       <footer>copy</footer>
     </>
   );

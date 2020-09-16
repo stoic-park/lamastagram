@@ -38,9 +38,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home() {
+function Home(props) {
   const [posts, setPosts] = useState([]);
   // console.log(posts);
+  // console.log(props.user.displayName);
   // modal
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
@@ -65,7 +66,7 @@ function Home() {
       {/* modal - uploadPost */}
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <UploadPost />
+          <UploadPost username={props.user.displayName} setOpen={setOpen} />
         </div>
       </Modal>
 
@@ -88,7 +89,15 @@ function Home() {
       {/* posts */}
       <div className="posts">
         {posts.map(({ id, post }) => (
-          <Post key={id} src={post.src} caption={post.caption} />
+          // 필요한 데이터가 뭐가 있을까?
+          <Post
+            key={id}
+            postId={id}
+            imageUrl={post.imageUrl}
+            caption={post.caption}
+            username={post.username}
+            user={props.user}
+          />
         ))}
       </div>
     </div>
