@@ -39,8 +39,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
   const [posts, setPosts] = useState([]);
   // console.log(posts);
   // modal

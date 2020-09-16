@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Input, Button } from "@material-ui/core";
 
 // firebase
-import { storage, db } from "../../firebase";
+import { storage, db, auth } from "../../firebase";
 import firebase from "firebase";
 
 // CSS
