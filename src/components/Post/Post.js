@@ -21,8 +21,8 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: 400,
-    height: 500,
+    width: 600,
+    height: 800,
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
@@ -39,7 +39,7 @@ function Post(props) {
   // 댓글 기능 추가
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
-  console.log(comments);
+  // console.log(comments);
 
   // 댓글 받아오기
   // 파이어베이스에서 컬렉션 추가하는것도 신기하넹
@@ -57,7 +57,10 @@ function Post(props) {
             //   id: doc.id,
             //   comment: doc.data(),
             // }))
-            snapshot.docs.map((doc) => doc.data())
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              comment: doc.data(),
+            }))
           );
         });
     }
@@ -90,31 +93,36 @@ function Post(props) {
           <p>{props.caption}</p>
           <div className="post_comments">
             {/* key? */}
-            {comments.map((comment) => (
-              <p>
+            {comments.map(({ id, comment }) => (
+              <p key={id}>
                 <strong>{comment.username}</strong> {comment.comment}
               </p>
             ))}
           </div>
-          <form className="post_commentBox">
-            <Input
-              className="post_input"
-              type="text"
-              placeholder="Add a Comment!"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-            <Button
-              className="post_button"
-              disabled={!comment}
-              type="submit"
-              onClick={handlePostComment}
-            >
-              Post
-            </Button>
-          </form>
+
+          {props.user && (
+            <form className="post_commentBox">
+              <Input
+                className="post_input"
+                type="text"
+                placeholder="Add a Comment!"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+              <Button
+                className="post_button"
+                disabled={!comment}
+                type="submit"
+                onClick={handlePostComment}
+              >
+                Post
+              </Button>
+            </form>
+          )}
         </div>
       </Modal>
+
+      {/* 이미지 클릭 시 모달창 오픈 */}
       <img
         key={props.id}
         onClick={() => setOpen(true)}

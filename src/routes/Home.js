@@ -64,11 +64,21 @@ function Home(props) {
   return (
     <div className="Home">
       {/* modal - uploadPost */}
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <div style={modalStyle} className={classes.paper}>
-          <UploadPost username={props.user.displayName} setOpen={setOpen} />
-        </div>
-      </Modal>
+      {props.user?.displayName ? (
+        <Modal open={open} onClose={() => setOpen(false)}>
+          <div style={modalStyle} className={classes.paper}>
+            <UploadPost username={props.user.displayName} setOpen={setOpen} />
+          </div>
+        </Modal>
+      ) : (
+        <Modal open={open} onClose={() => setOpen(false)}>
+          <div style={modalStyle} className={classes.paper}>
+            <center className="infor">
+              <strong>회원가입 후 글을 올려보세요!</strong>
+            </center>
+          </div>
+        </Modal>
+      )}
 
       {/* header - logo, userinfo */}
       <div className="app_header">

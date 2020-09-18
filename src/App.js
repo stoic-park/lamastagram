@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import AppRouter from "./AppRouter";
+import "./App.css";
 
 // firebase
 import { storage, db, auth } from "../src/firebase";
@@ -38,6 +39,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
+  const [nickname, setNickname] = useState("");
 
   // modal
   const classes = useStyles();
@@ -55,12 +57,14 @@ function App() {
           setOpen(true);
         } else {
           console.log("nickname exist");
+          // error?
         }
         setIsLoggedIn(true);
       } else {
         // user has logged out
         console.log("no user");
         setUser(null);
+        setNickname(null);
       }
     });
 

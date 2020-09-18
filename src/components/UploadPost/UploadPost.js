@@ -19,6 +19,7 @@ function UploadPost(props) {
     //! 여러장의 이미지를 업로드 할 때는?
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
+      // 이미지 미리보기
     }
   };
   // 함수 - 업로드
@@ -71,7 +72,8 @@ function UploadPost(props) {
         onChange={(event) => setCaption(event.target.value)}
         value={caption}
       />
-      <Input type="file" onChange={handleFileChange} />
+      {/* <img src={image} alt="" /> */}
+      <input type="file" accept="image/*" onChange={handleFileChange} />
       <Button onClick={handleUpload}>Upload</Button>
     </div>
   );

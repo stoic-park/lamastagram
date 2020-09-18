@@ -26,10 +26,11 @@ function Auth() {
       .catch((error) => alert(error.message));
   };
   return (
-    <div>
-      Auth
-      <button onClick={signUp}>GOOGLE</button>
-    </div>
+    <center>
+      <div>
+        <button onClick={signUp}>GOOGLE</button>
+      </div>
+    </center>
   );
 }
 
