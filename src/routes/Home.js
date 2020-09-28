@@ -91,6 +91,7 @@ function Home(props) {
           <button>HOME</button>
           <button>MY</button>
           <button onClick={() => setOpen(true)}>ADD POST</button>
+          <button onClick={() => auth.signOut()}>Log Out</button>
         </center>
       </div>
 

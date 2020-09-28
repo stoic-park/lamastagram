@@ -7,6 +7,9 @@ import firebase from "firebase";
 import { Modal, Button, Input } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+//
+import "./Auth.css";
+
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -32,7 +35,9 @@ const useStyles = makeStyles((theme) => ({
 function Auth() {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
@@ -104,34 +109,29 @@ function Auth() {
       .catch((error) => alert(error.message));
   };
   return (
-    <center>
+    <div className="auth_container">
       <Modal open={openSignUpModal} onClose={() => setOpenSignUpModal(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app_signup">
-            <center>
-              <img
-                // className="app_headerImage"
-                src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
-                alt=""
-              />
-            </center>
-            <input
+            {/* <input
               placeholder="username"
               type="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-            />
+            /> */}
             <input
+              name="email"
               placeholder="email"
               type="text"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={onChange}
             />
             <input
+              name="password"
               placeholder="password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={onChange}
             />
 
             <button type="submit" onClick={signUpEmail}>
@@ -140,29 +140,30 @@ function Auth() {
           </form>
         </div>
       </Modal>
-      <div>
-        <form onSubmit={onSubmit}>
-          <Input
-            type="email"
-            placeholder="Email"
-            required
-            value={email}
-            onChange={onChange}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            required={password}
-            onChange={onChange}
-          />
-          <input type="submit" value="Log In" onClick={signInEmail} />
-        </form>
-        <div>
-          <button onClick={() => setOpenSignUpModal(true)}>Sign Up</button>
-          <button onClick={signUpGoogle}>Continue with GOOGLE</button>
-        </div>
+      <form className="auth_inputbox" onSubmit={onSubmit}>
+        <input
+          name="email"
+          type="text"
+          placeholder="Email"
+          required
+          value={email}
+          onChange={onChange}
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          required={password}
+          onChange={onChange}
+        />
+        <input type="submit" value="Log In" onClick={signInEmail} />
+      </form>
+
+      <div className="auth_anotherbox">
+        <button onClick={() => setOpenSignUpModal(true)}>Sign Up</button>
+        <button onClick={signUpGoogle}>Continue with GOOGLE</button>
       </div>
-    </center>
+    </div>
   );
 }
 

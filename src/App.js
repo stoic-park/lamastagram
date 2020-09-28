@@ -101,7 +101,7 @@ function App() {
       </Modal>
       {/*  */}
       {/*  */}
-      <button onClick={() => auth.signOut()}>Log Out</button>
+      {/* <button onClick={() => auth.signOut()}>Log Out</button> */}
       <AppRouter isLoggedIn={isLoggedIn} user={user} />
       <footer>copy</footer>
     </>
