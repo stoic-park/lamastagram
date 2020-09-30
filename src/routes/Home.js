@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 
 // Component
-import Post from "../components/Post/Post";
+// import Post from "../components/Post/Post";
+import Posts from "../components/Posts/Posts";
 import UploadPost from "../components/UploadPost/UploadPost";
 
 // firebase
@@ -98,7 +99,8 @@ function Home(props) {
       {/* navbar - home / mypost* / addPost /}
 
       {/* posts */}
-      <div className="posts">
+      <Posts user={props.user} />
+      {/* <div className="posts">
         {posts.map(({ id, post }) => (
           // 필요한 데이터가 뭐가 있을까?
           <Post
@@ -110,7 +112,7 @@ function Home(props) {
             user={props.user}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

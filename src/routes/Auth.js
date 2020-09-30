@@ -4,7 +4,16 @@ import { db, auth } from "../firebase";
 import firebase from "firebase";
 
 // material-ui
-import { Modal, Button, Input } from "@material-ui/core";
+import {
+  Modal,
+  Button,
+  Input,
+  TextField,
+  FormControlLabel,
+  Container,
+  Typography,
+  Box,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 //
@@ -109,7 +118,7 @@ function Auth() {
       .catch((error) => alert(error.message));
   };
   return (
-    <div className="auth_container">
+    <Container className="auth_container" maxWidth="xs">
       <Modal open={openSignUpModal} onClose={() => setOpenSignUpModal(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app_signup">
@@ -140,30 +149,74 @@ function Auth() {
           </form>
         </div>
       </Modal>
-      <form className="auth_inputbox" onSubmit={onSubmit}>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={onChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required={password}
-          onChange={onChange}
-        />
-        <input type="submit" value="Log In" onClick={signInEmail} />
-      </form>
+      {/* header - app name */}
+      <div className="auth_inputbox">
+        <center>
+          <Typography component="h1" variant="h5">
+            lamastagram
+          </Typography>
+        </center>
 
-      <div className="auth_anotherbox">
-        <button onClick={() => setOpenSignUpModal(true)}>Sign Up</button>
-        <button onClick={signUpGoogle}>Continue with GOOGLE</button>
+        <form className="auth_formbox" onSubmit={onSubmit}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={email}
+            onChange={onChange}
+          />
+          {/* <Input
+            name="email"
+            type="text"
+            placeholder="Email"
+            required
+            value={email}
+            onChange={onChange}
+          /> */}
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="password"
+            label="Password"
+            name="password"
+            autoComplete="password"
+            autoFocus
+            value={password}
+            onChange={onChange}
+            type="password"
+          />
+          {/* <Input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required={password}
+            onChange={onChange}
+          /> */}
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            // value="Log In"
+            color="primary"
+            onClick={signInEmail}
+          >
+            Sign In
+          </Button>
+        </form>
       </div>
-    </div>
+      <div className="auth_anotherbox">
+        <Button onClick={() => setOpenSignUpModal(true)}>Sign Up</Button>
+        <Button onClick={signUpGoogle}>Continue with GOOGLE</Button>
+      </div>
+    </Container>
   );
 }
 
