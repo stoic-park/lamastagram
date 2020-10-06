@@ -13,14 +13,27 @@ function UploadPost(props) {
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
+  // preview
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
 
   // 함수 - 이미지 파일 선택
   const handleFileChange = (e) => {
-    //! 여러장의 이미지를 업로드 할 때는?
+    //! 여러장의 이미지를 업로드 할 때는? 일단 보류.
+    //! 데이터의 크기 적인 부분에서부터 제한사항 발생.
+    //! 그 외에 제한사항들에 대해서 알아보자... 좋은 글감이네
+
+    //! 프리뷰
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
     if (e.target.files[0]) {
-      setImage(e.target.files[0]);
       // 이미지 미리보기
+      reader.onloadend = () => {
+        setImage(file);
+        setImagePreviewUrl(reader.result);
+      };
     }
+    reader.readAsDataURL(file);
   };
   // 함수 - 업로드
   const handleUpload = () => {
@@ -66,15 +79,24 @@ function UploadPost(props) {
 
   return (
     <div className="uploadPost">
-      <Input
-        type="text"
-        placeholder="Enter a comment"
-        onChange={(event) => setCaption(event.target.value)}
-        value={caption}
-      />
-      {/* <img src={image} alt="" /> */}
-      <input type="file" accept="image/*" onChange={handleFileChange} />
-      <Button onClick={handleUpload}>Upload</Button>
+      <div className="previewForm">
+        {imagePreviewUrl ? (
+          <img className="previewImage" src={imagePreviewUrl} alt=""></img>
+        ) : (
+          <div className="previewText">Please select an Image</div>
+        )}
+      </div>
+      <div className="uploadForm">
+        {/* <img src={image} alt="" /> */}
+        <input type="file" accept="image/*" onChange={handleFileChange} />
+        <Button onClick={handleUpload}>Upload</Button>
+        <Input
+          type="text"
+          placeholder="Enter a comment"
+          onChange={(event) => setCaption(event.target.value)}
+          value={caption}
+        />
+      </div>
     </div>
   );
 }
