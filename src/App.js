@@ -84,7 +84,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="App">
       {/* 닉네임 설정 모달 */}
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
@@ -99,12 +99,9 @@ function App() {
           </Button>
         </div>
       </Modal>
-      {/*  */}
-      {/*  */}
-      {/* <button onClick={() => auth.signOut()}>Log Out</button> */}
       <AppRouter isLoggedIn={isLoggedIn} user={user} />
-      <footer>copy</footer>
-    </>
+      {/* <footer>copyright by stoic-park</footer> */}
+    </div>
   );
 }
 
