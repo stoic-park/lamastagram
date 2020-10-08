@@ -4,11 +4,11 @@ import "./Post.css";
 import { Modal, Button, Input } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+// import Container from "@material-ui/core/Container";
 
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
+// import CardActions from "@material-ui/core/CardActions";
+// import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
@@ -111,7 +111,7 @@ function Post({ key, postId, imageUrl, caption, username, user }) {
   };
 
   return (
-    <Grid item key={key} xs={12} sm={6} md={6} lg={4}>
+    <Grid item key={key} xs={12} sm={6} md={4} lg={3}>
       {/* <div className="post"> */}
       {/* 이미지 선택시 이미지 및 설명, 댓글 등을 볼 수 있다, 사실상 본체 */}
       <Modal open={open} onClose={() => setOpen(false)}>
@@ -172,15 +172,21 @@ function Post({ key, postId, imageUrl, caption, username, user }) {
           title="Image title"
         />
 
-        <CardActions>
-          <Typography>nickname</Typography>
-          <Button size="small" color="primary">
-            like
-          </Button>
-          <Button size="small" color="primary">
-            view
-          </Button>
-        </CardActions>
+        {/* <CardActions> */}
+        <div className="card_actions">
+          <div>
+            <Typography>nickname</Typography>
+          </div>
+          <div>
+            <Button size="small" color="primary">
+              like
+            </Button>
+            <Button size="small" color="primary">
+              view
+            </Button>
+          </div>
+        </div>
+        {/* </CardActions> */}
       </Card>
     </Grid>
   );

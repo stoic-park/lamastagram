@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Header.css";
 
 // firebase
 import { db, auth } from "../../firebase";
@@ -10,6 +11,7 @@ import UploadPost from "../UploadPost/UploadPost";
 // material-ui
 import { Modal, Button, Input } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 function getModalStyle() {
   const top = 50;
@@ -56,12 +58,20 @@ function Header({ user }) {
           </div>
         </Modal>
       )}
-      <center>
+      {/* <center>
         <button>HOME</button>
         <button>MY</button>
         <button onClick={() => setOpen(true)}>ADD POST</button>
         <button onClick={() => auth.signOut()}>Log Out</button>
-      </center>
+      </center> */}
+      <div className="sub_header">
+        <div className="sub_header_title">
+          <Typography variant="h2">Lamastagram.</Typography>
+        </div>
+        <div className="sub_header_subtitle">
+          <Typography variant="h3">subtitle.</Typography>
+        </div>
+      </div>
     </div>
   );
 }

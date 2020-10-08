@@ -100,7 +100,9 @@ function App() {
         </div>
       </Modal>
       <AppRouter isLoggedIn={isLoggedIn} user={user} />
-      {/* <footer>copyright by stoic-park</footer> */}
+      <footer>
+        <center>copyright by stoic-park</center>
+      </footer>
     </div>
   );
 }

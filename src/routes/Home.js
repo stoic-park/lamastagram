@@ -41,8 +41,10 @@ function Home(props) {
   return (
     <div className="Home">
       <Navbar />
-      <Header user={props.user} />
-      <Posts user={props.user} />
+      <main>
+        <Header user={props.user} />
+        <Posts user={props.user} />
+      </main>
     </div>
   );
 }

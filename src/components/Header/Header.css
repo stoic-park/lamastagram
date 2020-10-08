@@ -1,0 +1,11 @@
+.app_header {
+  /* height: 80px;
+  width: 100%; */
+}
+
+.sub_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

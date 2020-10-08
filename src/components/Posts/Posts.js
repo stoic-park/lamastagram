@@ -36,7 +36,7 @@ function Posts({ user }) {
 
   return (
     // <div className="posts">
-    <Container className={classes.cardGrid} maxWidth="lg">
+    <Container className={classes.cardGrid} maxWidth="xl">
       <Grid container spacing={4}>
         {posts.map(({ id, post }) => (
           // 필요한 데이터가 뭐가 있을까?

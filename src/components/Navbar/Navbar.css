@@ -3,4 +3,26 @@
   position: fixed;
   right: 0;
   top: 0;
+  height: 64px;
+  background-color: white;
+  color: black;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 8px -8px;
+}
+
+.navbar_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+  align-items: center;
+}
+
+.navbar_right_container {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.navbar_right_container li {
+  padding: 10px;
 }

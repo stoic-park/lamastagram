@@ -1,6 +1,7 @@
 /* 햄버거메뉴 */
 /* 네브바 */
 
-.app_header {
-  padding-top: 58px;
+main {
+  padding-top: 80px;
+  /* padding-bottom: 20px; */
 }
