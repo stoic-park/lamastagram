@@ -46,7 +46,11 @@ function Header({ user }) {
       {user?.displayName ? (
         <Modal open={open} onClose={() => setOpen(false)}>
           <div style={modalStyle} className={classes.paper}>
-            <UploadPost username={user.displayName} setOpen={setOpen} />
+            <UploadPost
+              username={user.displayName}
+              user={user}
+              setOpen={setOpen}
+            />
           </div>
         </Modal>
       ) : (
@@ -64,13 +68,17 @@ function Header({ user }) {
         <button onClick={() => setOpen(true)}>ADD POST</button>
         <button onClick={() => auth.signOut()}>Log Out</button>
       </center> */}
+      {/* <button onClick={() => setOpen(true)}>ADD POST</button> */}
       <div className="sub_header">
         <div className="sub_header_title">
           <Typography variant="h2">Lamastagram.</Typography>
+          {/* <h1>Lamastagram.</h1> */}
         </div>
         <div className="sub_header_subtitle">
-          <Typography variant="h3">subtitle.</Typography>
+          {/* <Typography variant="h3">subtitle.</Typography> */}
+          {/* <h3>subtitle</h3> */}
         </div>
+        <button onClick={() => setOpen(true)}>ADD POST</button>
       </div>
     </div>
   );

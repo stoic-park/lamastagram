@@ -20,23 +20,23 @@ import { makeStyles } from "@material-ui/core/styles";
 // modal - for upload
 
 function Home(props) {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
   // console.log(posts);
   // console.log(props.user.displayName);
 
-  useEffect(() => {
-    db.collection("posts")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
-        // onSnapshot : every time a new post is added!
-        setPosts(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            post: doc.data(),
-          }))
-        );
-      });
-  }, []);
+  // useEffect(() => {
+  //   db.collection("posts")
+  //     .orderBy("timestamp", "desc")
+  //     .onSnapshot((snapshot) => {
+  //       // onSnapshot : every time a new post is added!
+  //       setPosts(
+  //         snapshot.docs.map((doc) => ({
+  //           id: doc.id,
+  //           post: doc.data(),
+  //         }))
+  //       );
+  //     });
+  // }, []);
 
   return (
     <div className="Home">

@@ -11,3 +11,13 @@
   align-items: center;
   margin: 10px;
 }
+
+.card_actions_left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.post_username {
+  padding-left: 5px;
+}

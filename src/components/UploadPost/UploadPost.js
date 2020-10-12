@@ -8,7 +8,7 @@ import firebase from "firebase";
 // CSS
 import "./UploadPost.css";
 
-function UploadPost(props) {
+function UploadPost({ username, user, setOpen }) {
   // 스테이트
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
@@ -64,14 +64,15 @@ function UploadPost(props) {
             db.collection("posts").add({
               caption: caption,
               imageUrl: url,
-              username: props.username,
+              avatar: user.photoURL,
+              username: username,
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             });
             // 완료 후 셋팅
             setProgress(0);
             setCaption("");
             setImage(null);
-            props.setOpen(false);
+            setOpen(false);
           });
       }
     );

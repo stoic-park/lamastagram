@@ -22,7 +22,7 @@ function Posts({ user }) {
 
   useEffect(() => {
     db.collection("posts")
-      // .orderBy("timestamp", "desc")
+      .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
         // onSnapshot : every time a new post is added!
         setPosts(
@@ -47,6 +47,7 @@ function Posts({ user }) {
             caption={post.caption}
             username={post.username}
             user={user}
+            avatar={post.avatar}
           />
         ))}
       </Grid>
