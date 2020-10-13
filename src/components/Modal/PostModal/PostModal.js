@@ -11,7 +11,8 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { db } from "../../../firebase";
 import firebase from "firebase";
-import AspectRatioIcon from "@material-ui/icons/AspectRatio";
+// import AspectRatioIcon from "@material-ui/icons/AspectRatio";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 import ImageModal from "../ImageModal/ImageModal";
 
@@ -58,6 +59,7 @@ function PostModal({
           );
         });
     }
+    console.log(comments);
 
     return () => {
       unsubscribe();
@@ -78,16 +80,29 @@ function PostModal({
     setComment("");
   };
 
+  // update & delete
+  const handleCommentUpdate = ({ id }) => {
+    // db.collection("posts").doc(postId).collection("comments").set({
+    //   comment: input,
+    // }, {
+    //   merge: true
+    // });
+  };
+
+  const handleCommentDelete = ({ id }) => {
+    db.collection("posts").doc(postId).collection("comments").doc(id).delete();
+  };
+
   return (
     <Modal open={open} onClose={() => setOpen(false)}>
-      <Container maxWidth="xl">
+      <Container spacing={12} maxWidth={"xl"}>
         <Grid
-          container
-          spacing={12}
+          key={postId}
+          item
           xs={12}
           sm={12}
-          md={8}
-          lg={8}
+          md={12}
+          lg={12}
           // style={modalStyle}
           // className={classes.paper}
           className="post_modal_container"
@@ -158,19 +173,44 @@ function PostModal({
                     </form>
                   )}
                   {/* key? */}
+
                   {comments.map(({ id, comment }) => (
-                    <div className="commentBox">
-                      <div className="commentBox_comment" key={id}>
-                        <Avatar
-                          className={classes.avatar}
-                          alt="Remy Sharp"
-                          src={comment.avatar}
-                        />
-                        <strong className="strong_pl10px">
-                          {comment.username}
-                        </strong>
-                        <p className="p_lp10px"> {comment.comment}</p>
-                      </div>
+                    <div key={id} className="commentBox">
+                      {/* comment.username 과 user.displayName이 같을 경우 삭제 버튼 */}
+                      {username === comment.username ? (
+                        <div className="commentBox_comment">
+                          <Avatar
+                            className={classes.avatar}
+                            alt="Remy Sharp"
+                            src={comment.avatar}
+                          />
+                          <strong className="strong_pl10px">
+                            {comment.username}
+                          </strong>
+                          <p className="p_lp10px"> {comment.comment}</p>
+                          {/* <button>update</button> */}
+                          <HighlightOffIcon
+                            fontSize="small"
+                            className="icon_delete_comment"
+                            onClick={() => handleCommentDelete({ id })}
+                          />
+                          {/* <button onClick={() => handleCommentDelete({ id })}>
+                            delete
+                          </button> */}
+                        </div>
+                      ) : (
+                        <div className="commentBox_comment">
+                          <Avatar
+                            className={classes.avatar}
+                            alt="Remy Sharp"
+                            src={comment.avatar}
+                          />
+                          <strong className="strong_pl10px">
+                            {comment.username}
+                          </strong>
+                          <p className="p_lp10px"> {comment.comment}</p>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

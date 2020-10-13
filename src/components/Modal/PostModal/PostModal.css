@@ -124,9 +124,17 @@
   padding-left: 10px;
 }
 
-.icon_aspectratio {
+/* .icon_aspectratio {
   position: absolute;
   top: 95%;
   right: 43%;
   transform: translate(-150%, -10%);
+} */
+
+.icon_delete_comment {
+  padding-left: 10px;
+}
+
+.icon_delete_comment:hover {
+  opacity: 0.4;
 }

@@ -1,3 +1,9 @@
+:root {
+  --text-color: #eee5e9;
+  --background-color: #d2bcdb;
+  --accent-color: #8f148f52;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;700&display=swap");
 
 * {
