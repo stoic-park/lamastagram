@@ -11,28 +11,11 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { db } from "../../../firebase";
 import firebase from "firebase";
+import AspectRatioIcon from "@material-ui/icons/AspectRatio";
 
-// about Modal
-function getModalStyle() {
-  const top = 50;
-  const left = 50;
+import ImageModal from "../ImageModal/ImageModal";
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    width: "60%",
-    height: 800,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
   avatar: {
     width: theme.spacing(4),
     height: theme.spacing(4),
@@ -51,7 +34,8 @@ function PostModal({
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const classes = useStyles();
-  const [modalStyle] = useState(getModalStyle);
+  // const [modalStyle] = useState(getModalStyle);
+  const [openImage, setOpenImage] = useState(false);
 
   useEffect(() => {
     let unsubscribe;
@@ -108,6 +92,11 @@ function PostModal({
           // className={classes.paper}
           className="post_modal_container"
         >
+          <ImageModal
+            imageUrl={imageUrl}
+            open={openImage}
+            setOpen={setOpenImage}
+          />
           <div className="post_modal">
             <div className="post_modal_left">
               <img
@@ -115,7 +104,9 @@ function PostModal({
                 src={imageUrl}
                 alt=""
                 width="100%"
+                onClick={() => setOpenImage(true)}
               />
+              {/* <AspectRatioIcon className="icon_aspectratio" /> */}
             </div>
             <div className="post_modal_right">
               <div className="post_modal_right_info">

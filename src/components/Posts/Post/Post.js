@@ -29,15 +29,15 @@ import firebase from "firebase";
 // }
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    width: "60%",
-    height: 800,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
+  // paper: {
+  //   position: "absolute",
+  //   width: "60%",
+  //   height: 800,
+  //   backgroundColor: theme.palette.background.paper,
+  //   border: "2px solid #000",
+  //   boxShadow: theme.shadows[5],
+  //   padding: theme.spacing(2, 4, 3),
+  // },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),

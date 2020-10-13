@@ -123,3 +123,10 @@
 .p_lp10px {
   padding-left: 10px;
 }
+
+.icon_aspectratio {
+  position: absolute;
+  top: 95%;
+  right: 43%;
+  transform: translate(-150%, -10%);
+}
