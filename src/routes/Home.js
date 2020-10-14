@@ -19,7 +19,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // modal - for upload
 
-function Home({ user, isLoggedIn, setIsLoggedIn }) {
+function Home({ user, setIsLoggedIn }) {
   // const [posts, setPosts] = useState([]);
   // console.log(posts);
   // console.log(props.user.displayName);

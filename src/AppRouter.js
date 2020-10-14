@@ -5,25 +5,17 @@ import Home from "./routes/Home";
 import Profile from "./routes/Profile";
 
 // isLoggedIn 상태만 내려주면 된다.
-function AppRouter({ isLoggedIn, user, setIsLoggedIn }) {
+function AppRouter({ user, setIsLoggedIn, isLoggedIn }) {
   return (
     <Router>
       <Switch>
         {isLoggedIn ? (
           <>
             <Route exact path="/">
-              <Home
-                user={user}
-                isLoggedIn={isLoggedIn}
-                setIsLoggedIn={setIsLoggedIn}
-              />
+              <Home user={user} setIsLoggedIn={setIsLoggedIn} />
             </Route>
             <Route path="/profile">
-              <Profile
-                user={user}
-                isLoggedIn={isLoggedIn}
-                setIsLoggedIn={setIsLoggedIn}
-              />
+              <Profile user={user} setIsLoggedIn={setIsLoggedIn} />
             </Route>
           </>
         ) : (
