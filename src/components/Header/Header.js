@@ -12,6 +12,8 @@ import UploadPost from "../UploadPost/UploadPost";
 import { Modal, Button, Input } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import AddIcon from "@material-ui/icons/Add";
+import CreateIcon from "@material-ui/icons/Create";
 
 function getModalStyle() {
   const top = 50;
@@ -78,7 +80,12 @@ function Header({ user }) {
           {/* <Typography variant="h3">subtitle.</Typography> */}
           {/* <h3>subtitle</h3> */}
         </div>
-        <button onClick={() => setOpen(true)}>ADD POST</button>
+        <CreateIcon
+          fontSize="large"
+          className="icon_add_post"
+          onClick={() => setOpen(true)}
+        />
+        {/* <button onClick={() => setOpen(true)}>ADD POST</button> */}
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ function App() {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         // user has logged in
-        console.log(authUser);
+        // console.log(authUser);
         setUser(authUser);
         if (!user.displayName) {
           setOpen(true);

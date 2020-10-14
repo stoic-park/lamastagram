@@ -1,6 +1,7 @@
 .app_header {
-  /* height: 80px;
-  width: 100%; */
+  padding-top: 20px;
+  /* height: 64px; */
+  /* width: 100%; */
 }
 
 .sub_header {
@@ -8,4 +9,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.icon_add_post {
+  padding-top: 30px;
+  padding: 20px;
+}
+
+.icon_add_post:hover {
+  opacity: 0.4;
 }

@@ -29,6 +29,7 @@ function PostModal({
   user,
   postId,
   username,
+  avatar,
   open,
   setOpen,
 }) {
@@ -59,7 +60,7 @@ function PostModal({
           );
         });
     }
-    console.log(comments);
+    // console.log(comments);
 
     return () => {
       unsubscribe();
@@ -95,7 +96,7 @@ function PostModal({
 
   return (
     <Modal open={open} onClose={() => setOpen(false)}>
-      <Container spacing={12} maxWidth={"xl"}>
+      <Container spacing={12} maxWidth="xl">
         <Grid
           key={postId}
           item
@@ -103,8 +104,6 @@ function PostModal({
           sm={12}
           md={12}
           lg={12}
-          // style={modalStyle}
-          // className={classes.paper}
           className="post_modal_container"
         >
           <ImageModal
@@ -126,15 +125,7 @@ function PostModal({
             <div className="post_modal_right">
               <div className="post_modal_right_info">
                 <div className="post_modal_right_info_user">
-                  {user.photoURL ? (
-                    <Avatar
-                      className={classes.avatar}
-                      alt="Remy Sharp"
-                      src={user.photoURL}
-                    />
-                  ) : (
-                    <Avatar className={classes.avatar}>H</Avatar>
-                  )}
+                  <Avatar className={classes.avatar} src={avatar}></Avatar>
                   <div className="post_modal_username">{username}</div>
                 </div>
                 <p className="post_modal_caption">{caption}</p>
@@ -151,7 +142,7 @@ function PostModal({
                           src={user.photoURL}
                         />
                       ) : (
-                        <Avatar className={classes.avatar}>H</Avatar>
+                        <Avatar className={classes.avatar}></Avatar>
                       )}
                       <div className="post_modal_right_commentBox_commentInput_rightbox">
                         <Input
