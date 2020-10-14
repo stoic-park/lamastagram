@@ -19,7 +19,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // modal - for upload
 
-function Home(props) {
+function Home({ user, isLoggedIn, setIsLoggedIn }) {
   // const [posts, setPosts] = useState([]);
   // console.log(posts);
   // console.log(props.user.displayName);
@@ -40,10 +40,10 @@ function Home(props) {
 
   return (
     <div className="Home">
-      <Navbar />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
       <main>
-        <Header user={props.user} />
-        <Posts user={props.user} />
+        <Header user={user} />
+        <Posts user={user} />
       </main>
     </div>
   );

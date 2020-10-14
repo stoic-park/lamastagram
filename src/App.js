@@ -99,7 +99,11 @@ function App() {
           </Button>
         </div>
       </Modal>
-      <AppRouter isLoggedIn={isLoggedIn} user={user} />
+      <AppRouter
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        user={user}
+      />
       <footer>
         <center>copyright by stoic-park</center>
       </footer>

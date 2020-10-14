@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import InputBase from "@material-ui/core/InputBase";
 import Input from "@material-ui/core/Input";
 
-import { Route, Link } from "react-router-dom";
+import { Route, Link, withRouter } from "react-router-dom";
 
 // firebase
 import { db, auth } from "../../firebase";
 import firebase from "firebase";
 
-function Navbar() {
+function Navbar({ setIsLoggedIn }) {
+  const handleLogout = () => {
+    auth.signOut();
+    setIsLoggedIn(false);
+  };
+
   return (
     <div className="app_navbar">
       <div className="navbar_container">
@@ -27,7 +32,9 @@ function Navbar() {
           </li>
           {/* <li>addpost</li> */}
           <li>
-            <button onClick={() => auth.signOut()}>Log Out</button>
+            <Link to="/">
+              <button onClick={() => handleLogout()}>Log Out</button>
+            </Link>
           </li>
         </div>
       </div>
