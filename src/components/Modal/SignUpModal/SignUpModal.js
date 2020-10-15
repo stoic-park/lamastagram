@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SignUpModal.css";
 
 // firebase
 import { db, auth } from "../../../firebase";
@@ -15,34 +16,9 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-function getModalStyle() {
-  const top = 50;
-  const left = 50;
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
 
 // main function
 function SignUpModal({ openSignUpModal, setOpenSignUpModal }) {
-  const classes = useStyles();
-  const [modalStyle] = useState(getModalStyle);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [openSignUpModal, setOpenSignUpModal] = useState(false);
@@ -80,28 +56,47 @@ function SignUpModal({ openSignUpModal, setOpenSignUpModal }) {
 
   return (
     <Modal open={openSignUpModal} onClose={() => setOpenSignUpModal(false)}>
-      <div style={modalStyle} className={classes.paper}>
-        <form className="app_signup">
-          <input
-            name="email"
-            placeholder="email"
-            type="text"
-            value={email}
-            onChange={onChange}
-          />
-          <input
-            name="password"
-            placeholder="password"
-            type="password"
-            value={password}
-            onChange={onChange}
-          />
+      <Container spacing={12} maxWidth="xl">
+        <div className="signup_container">
+          <div className="signup_header">회원 가입</div>
+          <form className="app_signup">
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="email"
+              // placeholder="email"
+              id="email"
+              label="이메일 주소"
+              autoComplete="email"
+              autoFocus
+              // type="text"
+              value={email}
+              onChange={onChange}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              // placeholder="password"
+              id="password"
+              label="비밀 번호"
+              type="password"
+              autoComplete="password"
+              autoFocus
+              value={password}
+              onChange={onChange}
+            />
 
-          <button type="submit" onClick={signUpEmail}>
-            signUp
-          </button>
-        </form>
-      </div>
+            <Button type="submit" onClick={signUpEmail}>
+              signUp
+            </Button>
+          </form>
+        </div>
+      </Container>
     </Modal>
   );
 }
