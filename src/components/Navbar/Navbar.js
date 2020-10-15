@@ -33,7 +33,8 @@ function Navbar({ setIsLoggedIn }) {
           {/* <li>addpost</li> */}
           <li>
             <Link to="/">
-              <button onClick={() => handleLogout()}>Log Out</button>
+              {/* <button onClick={() => handleLogout()}>Log Out</button> */}
+              <div onClick={() => handleLogout()}>logout</div>
             </Link>
           </li>
         </div>

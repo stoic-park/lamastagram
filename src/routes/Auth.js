@@ -18,6 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 //
 import "./Auth.css";
+import SignUpModal from "../components/Modal/SignUpModal/SignUpModal";
 
 function getModalStyle() {
   const top = 50;
@@ -47,21 +48,8 @@ function Auth() {
   // const [username, setUsername] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
 
-  // email, password 변화된 스테이트를 동시에!
-  const onChange = (event) => {
-    // console.log(event.target.name);
-    // const {target: {name, value}} = event;
-    const { name, value } = event.target;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
-  };
   const onSubmit = (event) => {
     event.preventDefault();
   };
@@ -69,38 +57,28 @@ function Auth() {
   // var provider = new auth.GoogleAuthProvider();
   var provider = new firebase.auth.GoogleAuthProvider();
 
-  // sign-up Email function
-  const signUpEmail = (event) => {
-    // 왜 쓰는지 알제?
-    event.preventDefault();
-
-    // power simple
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        // return authUser.user.updateProfile({
-        //   displayName: username,
-        // });
-      })
-      .catch((error) => alert(error.message));
-
-    setOpenSignUpModal(false);
-    setEmail("");
-    setPassword("");
-  };
-
   // sign-in Email function
   const signInEmail = (event) => {
     event.preventDefault();
 
     // power simple.. 더 간단하네?
     auth
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(loginEmail, loginPassword)
       .catch((error) => alert(error.message));
-    setEmail("");
-    setPassword("");
+    setLoginEmail("");
+    setLoginPassword("");
   };
 
+  const onChange = (event) => {
+    // console.log(event.target.name);
+    // const {target: {name, value}} = event;
+    const { name, value } = event.target;
+    if (name === "email") {
+      setLoginEmail(value);
+    } else if (name === "password") {
+      setLoginPassword(value);
+    }
+  };
   // sign-up Google function
   const signUpGoogle = (event) => {
     // 왜 쓰는지 알제?
@@ -119,36 +97,10 @@ function Auth() {
   };
   return (
     <Container className="auth_container" maxWidth="xs">
-      <Modal open={openSignUpModal} onClose={() => setOpenSignUpModal(false)}>
-        <div style={modalStyle} className={classes.paper}>
-          <form className="app_signup">
-            {/* <input
-              placeholder="username"
-              type="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            /> */}
-            <input
-              name="email"
-              placeholder="email"
-              type="text"
-              value={email}
-              onChange={onChange}
-            />
-            <input
-              name="password"
-              placeholder="password"
-              type="password"
-              value={password}
-              onChange={onChange}
-            />
-
-            <button type="submit" onClick={signUpEmail}>
-              signUp
-            </button>
-          </form>
-        </div>
-      </Modal>
+      <SignUpModal
+        openSignUpModal={openSignUpModal}
+        setOpenSignUpModal={setOpenSignUpModal}
+      />
       {/* header - app name */}
       <div className="auth_inputbox">
         <center>
@@ -168,7 +120,7 @@ function Auth() {
             name="email"
             autoComplete="email"
             autoFocus
-            value={email}
+            value={loginEmail}
             onChange={onChange}
           />
           {/* <Input
@@ -189,7 +141,7 @@ function Auth() {
             name="password"
             autoComplete="password"
             autoFocus
-            value={password}
+            value={loginPassword}
             onChange={onChange}
             type="password"
           />
