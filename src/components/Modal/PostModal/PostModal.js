@@ -168,7 +168,7 @@ function PostModal({
                   {comments.map(({ id, comment }) => (
                     <div key={id} className="commentBox">
                       {/* comment.username 과 user.displayName이 같을 경우 삭제 버튼 */}
-                      {username === comment.username ? (
+                      {user.displayName === comment.username ? (
                         <div className="commentBox_comment">
                           <Avatar
                             className={classes.avatar}
