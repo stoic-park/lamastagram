@@ -91,12 +91,12 @@ function Post({ id, postId, imageUrl, caption, username, user, avatar }) {
             <Typography className="post_username">{username}</Typography>
           </div>
           <div className="card_actions_right">
-            <Button size="small" color="primary">
+            {/* <Button size="small" color="primary">
               like
-            </Button>
-            <Button size="small" color="primary">
+            </Button> */}
+            {/* <Button size="small" color="primary">
               view
-            </Button>
+            </Button> */}
           </div>
         </div>
       </Card>
