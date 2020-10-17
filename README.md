@@ -1,6 +1,7 @@
 # lamastagram
 
-React, Firebase 를 이용한 반려동물 소셜 네트워크 웹 서비스입니다.
+### React, Firebase 를 이용한 반려동물 소셜 네트워크 웹 서비스입니다.
+
 링크 : http://asq.kr/FQvw9g4wlCjZ
 
 ## 페이지 뷰
