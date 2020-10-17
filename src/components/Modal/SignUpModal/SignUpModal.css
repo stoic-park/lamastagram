@@ -8,8 +8,13 @@
   height: 100%;
   flex-direction: column;
   background-color: blanchedalmond;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+  /* padding-top: 80px; */
+}
+
+.signup_header {
+  margin-top: 64px;
 }
 
 .app_signup {

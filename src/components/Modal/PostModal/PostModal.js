@@ -82,13 +82,13 @@ function PostModal({
   };
 
   // update & delete
-  const handleCommentUpdate = ({ id }) => {
-    // db.collection("posts").doc(postId).collection("comments").set({
-    //   comment: input,
-    // }, {
-    //   merge: true
-    // });
-  };
+  // const handleCommentUpdate = ({ id }) => {
+  //   // db.collection("posts").doc(postId).collection("comments").set({
+  //   //   comment: input,
+  //   // }, {
+  //   //   merge: true
+  //   // });
+  // };
 
   const handleCommentDelete = ({ id }) => {
     db.collection("posts").doc(postId).collection("comments").doc(id).delete();

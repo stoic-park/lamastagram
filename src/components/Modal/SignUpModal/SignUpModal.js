@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import "./SignUpModal.css";
 
 // firebase
-import { db, auth } from "../../../firebase";
-import firebase from "firebase";
+import { auth } from "../../../firebase";
+// import firebase from "firebase";
 
 // material-ui
 import {
   Modal,
   Button,
-  Input,
+  // Input,
   TextField,
-  FormControlLabel,
+  // FormControlLabel,
   Container,
-  Typography,
-  Box,
+  // Typography,
+  // Box,
 } from "@material-ui/core";
 
 // main function
